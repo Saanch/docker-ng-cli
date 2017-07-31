@@ -16,16 +16,14 @@ ENV NPM_CONFIG_LOGLEVEL warn
 #angular-cli rc0 crashes with .angular-cli.json in user home
 ENV HOME "$USER_HOME_DIR"
 
-RUN apk add --update curl && \
+RUN apk add --update curl yarn dumb-init && \
     rm -rf /var/cache/apk/*
 
 RUN set -xe \
-    && curl -sL https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 > /usr/bin/dumb-init \
-    && chmod +x /usr/bin/dumb-init \
     && mkdir -p $USER_HOME_DIR \
     && chown $USER_ID $USER_HOME_DIR \
     && chmod a+rw $USER_HOME_DIR \
-    && (cd "$USER_HOME_DIR"; npm install -g @angular/cli@$NG_CLI_VERSION; npm install -g yarn; npm cache clean)
+    && (cd "$USER_HOME_DIR"; yarn global add @angular/cli@$NG_CLI_VERSION; yarn cache clean)
 
 VOLUME "$USER_HOME_DIR/.cache/yarn"
 VOLUME "$APP_DIR/"
