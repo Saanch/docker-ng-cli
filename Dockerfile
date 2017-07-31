@@ -25,7 +25,7 @@ RUN set -xe \
     && chmod a+rw $USER_HOME_DIR \
     && (cd "$USER_HOME_DIR"; yarn global add @angular/cli@$NG_CLI_VERSION; yarn cache clean)
 
-VOLUME "$USER_HOME_DIR/.cache/yarn"
+# VOLUME "$USER_HOME_DIR/.cache/yarn"
 VOLUME "$APP_DIR/"
 WORKDIR $APP_DIR
 EXPOSE 4200
