@@ -16,6 +16,9 @@ ENV NPM_CONFIG_LOGLEVEL warn
 #angular-cli rc0 crashes with .angular-cli.json in user home
 ENV HOME "$USER_HOME_DIR"
 
+RUN apk add --update curl && \
+    rm -rf /var/cache/apk/*
+
 RUN set -xe \
     && curl -sL https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 > /usr/bin/dumb-init \
     && chmod +x /usr/bin/dumb-init \
