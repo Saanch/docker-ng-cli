@@ -3,9 +3,9 @@
 #or specify angular-cli version
 #docker build --build-arg NG_CLI_VERSION=1.2.6
 
-FROM node:6
+FROM node:8.2.1-alpine
 
-MAINTAINER trion development GmbH "info@trion.de"
+MAINTAINER Sanu Sathyaseelan "sl.sanu@gmail.com"
 
 ARG NG_CLI_VERSION=1.2.6
 ARG USER_HOME_DIR="/tmp"
